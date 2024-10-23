@@ -4,7 +4,7 @@ public class task_cli {
 		TaskManager taskManager = new TaskManager();
 				
 		if(args.length < 1) {
-			System.out.println("引数が誤っています。");
+			System.out.println("arguments: [add] [update] [delete] [list] [mark-in-progress] [mark-in-done]");
 			return ;
 		}
 		
@@ -13,7 +13,7 @@ public class task_cli {
 		switch(command) {
 			case "add":
 				if(args.length < 2) {
-					System.out.println("add 引数が誤っています。");
+					System.out.println("Usage : add [description]");
 					return ;
 				}
 				taskManager.addTask(args[1]);
@@ -21,7 +21,7 @@ public class task_cli {
 				
 			case "update":
 				if(args.length < 3) {
-					System.out.println("update 引数が誤っています。");
+					System.out.println("Usage : update [taskID] [description]");
 					return ;
 				} else {
 					int id = Integer.parseInt(args[1]);
@@ -31,7 +31,7 @@ public class task_cli {
 			
 			case "delete":
 				if(args.length < 2) {
-					System.out.println("update 引数が誤っています。");
+					System.out.println("Usage : delete [taskID]");
 					return ;
 				} else {
 					int id = Integer.parseInt(args[1]);
@@ -51,7 +51,7 @@ public class task_cli {
 				
 			case "mark-in-progress":
 				if(args.length < 2) {
-					System.out.println("mark-in-progress 引数が誤っています。");
+					System.out.println("Usage : mark-in-progress [taskID]");
 				} else {
 					int id = Integer.parseInt(args[1]);
 					taskManager.markTask(id, "in-progress");
@@ -61,7 +61,7 @@ public class task_cli {
 			
 			case "mark-in-done":
 				if(args.length < 2) {
-					System.out.println("mark-in-done 引数が誤っています。");
+					System.out.println("Usage : mark-in-done [taskID]");
 				} else {
 					int id = Integer.parseInt(args[1]);
 					taskManager.markTask(id, "done");
@@ -70,7 +70,8 @@ public class task_cli {
 				break;
 				
 			default:
-				System.out.println("default 引数が誤っています。" + command);
+				System.out.println("wrong argument" + command);
+				System.out.println("arguments: [add] [update] [delete] [list] [mark-in-progress] [mark-in-done]");
 		}
 		
 	}
