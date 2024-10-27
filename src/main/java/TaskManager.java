@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class TaskManager {
 	private static final String FILE_PATH = "tasks.json";
-	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD HH:mm:ss");
+	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	
 	public static JSONArray loadTasks() {
 		Path path = Paths.get(FILE_PATH);
@@ -45,6 +45,7 @@ public class TaskManager {
 		Task task = new Task(id, description, "todo");
 		tasks.put(task.toJSON());
 		saveTasks(tasks);
+		System.out.println("taskの追加に成功しました。 ID : " + id);
 	}
 	
 	public void listTask(String filter) {
@@ -98,7 +99,7 @@ public class TaskManager {
 			JSONObject task = tasks.getJSONObject(i);
 			if(task.getInt("id") == id) {
 				task.put("status", newStatus);
-				task.put("updateAt", LocalDateTime.now().format(formatter));
+				task.put("updatedAt", LocalDateTime.now().format(formatter));
 				saveTasks(tasks);
 				System.out.println("taskのステータスを" + newStatus + "に変更しました。 ID: " + id);
 				return;
