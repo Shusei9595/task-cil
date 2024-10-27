@@ -70,7 +70,6 @@ public class task_cli {
 				break;
 				
 			default:
-				System.out.println("wrong argument" + command);
 				System.out.println("arguments: [add] [update] [delete] [list] [mark-in-progress] [mark-in-done]");
 		}
 		
