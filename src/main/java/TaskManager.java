@@ -55,7 +55,7 @@ public class TaskManager {
 			if(filter == null) {
 				System.out.println(task);
 			} else {
-				if(task.getString("status") == filter) {
+				if(task.getString("status").equals(filter)) {
 					System.out.println(task);
 				}
 			}
